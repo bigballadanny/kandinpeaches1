@@ -1,0 +1,47 @@
+{
+  "name": "telegram-bot-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "NODE_ENV=production ts-node --project tsconfig.server.json src/server.ts",
+    "lint": "next lint",
+    "test-bot": "node test-bot.js && cat bot-test-output.log",
+    "test-bot-log": "node test-bot.js > bot-output.log 2>&1"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.10.2",
+    "@deepgram/sdk": "^3.6.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@types/react-dom": "^18.3.0",
+    "ai": "^2.2.31",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "express": "^4.17.1",
+    "firebase": "^9.0.0",
+    "framer-motion": "^11.5.4",
+    "lucide-react": "^0.438.0",
+    "next": "^14.2.8",
+    "node-fetch": "^3.2.0",
+    "openai": "^4.24.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "replicate": "^0.25.1",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.16.5",
+    "@types/react": "^18.3.5",
+    "@types/socket.io": "^3.0.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.7",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

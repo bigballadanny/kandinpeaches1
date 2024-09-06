@@ -1,0 +1,30 @@
+
+> telegram-bot-nextjs@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.8
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/components/ContentRecommendation.tsx
+Error: 
+  [31mx[0m Expected ';', '}' or <eof>
+   ,-[[36;1;4m/home/runner/Daniel-Full-Stack-Nextjs-V1/src/components/ContentRecommendation.tsx[0m:1:1]
+ [2m1[0m | ''use client';;
+   : [31;1m^|[0m[33;1m^^^[0m
+   :  [31;1m`-- [31;1mThis is the expression part of an expression statement[0m[0m
+ [2m2[0m | import React, { useState, useEffect } from 'react';
+ [2m3[0m | 
+ [2m4[0m | interface Content {
+   `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/ContentRecommendation.tsx
+./src/components/Dashboard.tsx
+
+
+> Build failed because of webpack errors

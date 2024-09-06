@@ -1,0 +1,9 @@
+{
+  "project_name": "Team Synthios Workspace",
+  "version": "0.1.0",
+  "active_llms": ["ChatGPT", "Claude", "Gemini"],
+  "workspace_path": "src/synthios/workspace",
+  "ideas_path": "src/synthios/workspace/ideas",
+  "resources_path": "src/synthios/workspace/resources",
+  "tools_path": "src/synthios/workspace/tools"
+}
