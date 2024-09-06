@@ -1,9 +1,7 @@
-import { Dashboard } from '../components/Dashboard';
-
 export default function Home() {
   return (
     <main>
-      <Dashboard />
+      <h1>Hello, Next.js!</h1>
     </main>
   );
 }
