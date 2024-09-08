@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Simplify Home page
+cat > src/app/page.tsx << EOF
 import dynamic from 'next/dynamic'
 
 const LevelProgress = dynamic(() => import('../components/LevelProgress'), { ssr: false })
@@ -15,3 +19,13 @@ export default function Home() {
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Simplified Home page:
+- Removed PointSystem and AchievementBadge components
+- Kept only LevelProgress component for testing
+EOF
+
+echo "Home page simplified. Please run 'npm run dev' to see the changes."
