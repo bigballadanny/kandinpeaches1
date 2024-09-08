@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update root layout
+cat > src/app/layout.tsx << EOF
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Layout from '../components/Layout'
@@ -22,3 +26,12 @@ export default function RootLayout({
     </html>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Updated root layout:
+- Removed ThemeProvider temporarily to isolate the issue
+EOF
+
+echo "Root layout updated. Please run 'npm run dev' to see the changes."
