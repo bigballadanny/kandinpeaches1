@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update page.tsx
+cat > src/app/page.tsx << EOF
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Challenge } from '../types/Challenge'
@@ -49,3 +53,13 @@ export default function Home() {
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Updated page.tsx:
+- Used dynamic imports for client components
+- Removed server-side logic from the page component
+EOF
+
+echo "page.tsx updated. Please run 'npm run dev' to see the changes."
