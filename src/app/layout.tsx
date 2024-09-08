@@ -1,10 +1,13 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
 import Layout from '../components/Layout'
 
-export const metadata: Metadata = {
-  title: 'Content Analytics Platform',
-  description: 'Streamlined content management with powerful analytics',
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'Miami AI Creator',
+  description: 'Luxury content creation platform',
 }
 
 export default function RootLayout({
@@ -14,8 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Layout>{children}</Layout>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Layout>{children}</Layout>
+        </ThemeProvider>
       </body>
     </html>
   )
