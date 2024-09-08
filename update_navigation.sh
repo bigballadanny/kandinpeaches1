@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update ClientLayout component with improved navigation
+cat > src/components/ClientLayout.tsx << EOF
 'use client'
 
 import React from 'react'
@@ -24,7 +28,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <li key={item.name}>
               <Link 
                 href={item.path} 
-                className={}
+                className={`block p-2 rounded transition-all ${
+                  pathname === item.path 
+                    ? 'bg-miami-pink text-white' 
+                    : 'hover:bg-miami-light dark:hover:bg-miami-dark'
+                }`}
               >
                 {item.name}
               </Link>
@@ -38,3 +46,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Updated navigation:
+- Improved ClientLayout component
+- Added Miami-themed styling to navigation
+EOF
+
+echo "Navigation updated. Please run 'npm run dev' to see the changes."
