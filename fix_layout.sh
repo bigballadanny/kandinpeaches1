@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update Layout component
+cat > src/components/Layout.tsx << EOF
 'use client'
 
 import React from 'react'
@@ -27,7 +31,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <li key={item.name}>
               <Link 
                 href={item.path} 
-                className={}
+                className={`block p-2 rounded transition-all ${
+                  pathname === item.path 
+                    ? 'bg-luxury-gold text-midnight-blue' 
+                    : 'hover:bg-luxury-gold hover:text-midnight-blue'
+                }`}
               >
                 {item.name}
               </Link>
@@ -41,3 +49,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Fixed Layout component:
+- Added React import
+- Ensured proper JSX formatting
+EOF
+
+echo "Layout component fixed. Please run 'npm run dev' to see the changes."
