@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Simplify LevelProgress component
+cat > src/components/LevelProgress.tsx << EOF
 'use client'
 
 import React from 'react';
@@ -16,3 +20,12 @@ export default function LevelProgress({ level, experience, nextLevelExperience }
     </div>
   );
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Simplified LevelProgress component:
+- Removed complex JSX to isolate the issue
+EOF
+
+echo "LevelProgress component simplified. Please run 'npm run dev' to see the changes."
