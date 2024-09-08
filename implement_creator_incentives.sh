@@ -1,3 +1,56 @@
+#!/bin/bash
+
+# Create PointSystem component
+cat > src/components/PointSystem.tsx << EOF
+'use client'
+
+import React from 'react';
+
+type PointSystemProps = {
+  points: number;
+  level: number;
+};
+
+const PointSystem: React.FC<PointSystemProps> = ({ points, level }) => {
+  return (
+    <div className="glass-card p-4 rounded-lg">
+      <h2 className="text-2xl font-retro neon-text mb-2">Creator Stats</h2>
+      <p className="text-lg">Points: <span className="font-bold text-miami-pink">{points}</span></p>
+      <p className="text-lg">Level: <span className="font-bold text-miami-blue">{level}</span></p>
+    </div>
+  );
+};
+
+export default PointSystem;
+EOF
+
+# Create AchievementBadge component
+cat > src/components/AchievementBadge.tsx << EOF
+'use client'
+
+import React from 'react';
+
+type AchievementBadgeProps = {
+  title: string;
+  description: string;
+  icon: string;
+};
+
+const AchievementBadge: React.FC<AchievementBadgeProps> = ({ title, description, icon }) => {
+  return (
+    <div className="glass-card p-4 rounded-lg text-center transition-all hover:scale-105">
+      <span className="text-4xl mb-2">{icon}</span>
+      <h3 className="text-lg font-retro neon-text">{title}</h3>
+      <p className="text-sm">{description}</p>
+    </div>
+  );
+};
+
+export default AchievementBadge;
+EOF
+
+# Update page.tsx to include new components
+cat > src/app/page.tsx << EOF
 import dynamic from 'next/dynamic'
 import { Challenge } from '../types/Challenge'
 import { UserProfile } from '../types/UserProfile'
@@ -51,3 +104,14 @@ export default function Home() {
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Implemented creator incentives:
+- Created PointSystem component to display creator points and level
+- Added AchievementBadge component for visual representation of achievements
+- Updated homepage to include new components
+EOF
+
+echo "Creator incentives implemented. Please run 'npm run dev' to see the changes."
