@@ -45,7 +45,7 @@ EOF
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Fixed ClientLayout component:
-- Corrected className property in Link component
+- Corrected syntax errors in React.createElement calls
 EOF
 
 echo "ClientLayout component fixed. Please run 'npm run dev' to see the changes."
