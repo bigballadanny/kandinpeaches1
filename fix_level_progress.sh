@@ -4,39 +4,29 @@
 cat > src/components/LevelProgress.tsx << EOF
 'use client'
 
-import React from 'react';
+import React from 'react'
 
-type LevelProgressProps = {
-  level: number;
-  experience: number;
-  nextLevelExperience: number;
-};
-
-function LevelProgress({ level, experience, nextLevelExperience }: LevelProgressProps) {
-  const progress = (experience / nextLevelExperience) * 100;
+export default function LevelProgress({ level, experience, nextLevelExperience }: { level: number; experience: number; nextLevelExperience: number }) {
+  const progress = (experience / nextLevelExperience) * 100
 
   return (
-    <div className="bg-light-bg p-4 rounded-lg shadow-lg">
-      <h3 className="text-xl font-retro text-miami-orange mb-2">Level {level}</h3>
-      <div className="w-full bg-dark-bg rounded-full h-4 mb-2">
-        <div 
-          className="bg-gradient-to-r from-miami-pink to-miami-purple h-4 rounded-full" 
-          style={{width: `${progress}%`}}
-        ></div>
+    <div className="bg-white dark:bg-midnight-blue p-4 rounded-lg shadow-md">
+      <h2 className="text-2xl font-serif font-bold text-luxury-gold mb-2">Level Progress</h2>
+      <p className="text-lg mb-2">Level {level}</p>
+      <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div className="bg-luxury-gold h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
       </div>
-      <p className="text-sm text-right">{experience} / {nextLevelExperience} XP</p>
+      <p className="text-sm mt-2">{experience} / {nextLevelExperience} XP</p>
     </div>
-  );
+  )
 }
-
-export default LevelProgress;
 EOF
 
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Fixed LevelProgress component:
-- Changed to function declaration syntax
 - Added 'use client' directive
+- Ensured proper React import
 EOF
 
 echo "LevelProgress component fixed. Please run 'npm run dev' to see the changes."

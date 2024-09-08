@@ -1,3 +1,7 @@
+'use client'
+
+import React from 'react'
+
 export default function LevelProgress({ level, experience, nextLevelExperience }: { level: number; experience: number; nextLevelExperience: number }) {
   const progress = (experience / nextLevelExperience) * 100
 
