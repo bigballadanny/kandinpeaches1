@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Fix TelegramBroadcast component
+cat > src/components/TelegramBroadcast.tsx << EOF
 'use client'
 
 import React, { useState, useEffect } from 'react';
@@ -20,7 +24,7 @@ const TelegramBroadcast: React.FC<TelegramBroadcastProps> = ({ channelUrl, nextS
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
         
-        setTimeUntilSession();
+        setTimeUntilSession(`${hours}h ${minutes}m ${seconds}s`);
       } else {
         setTimeUntilSession('Live Now!');
       }
@@ -46,3 +50,12 @@ const TelegramBroadcast: React.FC<TelegramBroadcastProps> = ({ channelUrl, nextS
 };
 
 export default TelegramBroadcast;
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Fixed TelegramBroadcast component:
+- Added 'use client' directive to make it a Client Component
+EOF
+
+echo "TelegramBroadcast component fixed. Please run 'npm run dev' to see the changes."
