@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Enhance LevelProgress component
+cat > src/components/LevelProgress.tsx << EOF
 'use client'
 
 import React from 'react'
@@ -18,7 +22,7 @@ const LevelProgress: React.FC<LevelProgressProps> = ({ level, experience, nextLe
       <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
         <div 
           className="bg-luxury-gold h-2.5 rounded-full" 
-          style={{ width:  }}
+          style={{ width: `${progress}%` }}
         ></div>
       </div>
       <p className="text-sm mt-2">{experience} / {nextLevelExperience} XP</p>
@@ -27,3 +31,13 @@ const LevelProgress: React.FC<LevelProgressProps> = ({ level, experience, nextLe
 }
 
 export default LevelProgress
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Enhanced LevelProgress component:
+- Added basic styling
+- Implemented progress bar
+EOF
+
+echo "LevelProgress component enhanced. Please run 'npm run dev' to see the changes."
