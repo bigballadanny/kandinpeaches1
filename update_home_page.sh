@@ -34,8 +34,8 @@ EOF
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Updated Home page:
-- Added PointSystem component
-- Implemented grid layout for dashboard components
+- Added LevelProgress and PointSystem components
+- Implemented responsive grid layout
 EOF
 
 echo "Home page updated. Please run 'npm run dev' to see the changes."
