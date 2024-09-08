@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Enhance ClientLayout component
+cat > src/components/ClientLayout.tsx << EOF
 'use client'
 
 import React from 'react'
@@ -23,7 +27,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <li key={item.name}>
               <Link 
                 href={item.path} 
-                className={}
+                className={`block p-2 rounded transition-all ${
+                  pathname === item.path 
+                    ? 'bg-luxury-gold text-midnight-blue' 
+                    : 'hover:bg-luxury-gold hover:text-midnight-blue'
+                }`}
               >
                 {item.name}
               </Link>
@@ -37,3 +45,14 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Enhanced ClientLayout component:
+- Added gradient background
+- Styled navigation with active link highlighting
+- Improved overall layout structure
+EOF
+
+echo "ClientLayout component enhanced. Please run 'npm run dev' to see the changes."
