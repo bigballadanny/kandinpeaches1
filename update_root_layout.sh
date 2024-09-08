@@ -4,7 +4,7 @@
 cat > src/app/layout.tsx << EOF
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Layout from '../components/Layout'
+import ClientLayout from '../components/ClientLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Layout>{children}</Layout>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   )
@@ -31,7 +31,7 @@ EOF
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Updated root layout:
-- Removed ThemeProvider temporarily to isolate the issue
+- Directly imported and used ClientLayout
 EOF
 
 echo "Root layout updated. Please run 'npm run dev' to see the changes."
