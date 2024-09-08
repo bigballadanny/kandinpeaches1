@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update Layout component with basic styling
+cat > src/components/Layout.tsx << EOF
 'use client'
 
 import React from 'react'
@@ -23,7 +27,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <li key={item.name}>
               <Link 
                 href={item.path} 
-                className={}
+                className={`block p-2 rounded transition-all ${
+                  pathname === item.path 
+                    ? 'bg-luxury-gold text-midnight-blue' 
+                    : 'hover:bg-luxury-gold hover:text-midnight-blue'
+                }`}
               >
                 {item.name}
               </Link>
@@ -37,3 +45,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Updated Layout component:
+- Added basic styling for a luxurious look
+- Implemented responsive navigation with active link highlighting
+EOF
+
+echo "Layout component updated with basic styling. Please run 'npm run dev' to see the changes."
