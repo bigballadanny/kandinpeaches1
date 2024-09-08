@@ -15,26 +15,20 @@ const navItems = [
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
-  return (
-    <div className="flex min-h-screen">
-      <nav className="w-64 bg-white dark:bg-miami-dark p-6 space-y-6">
-        <h1 className="text-2xl font-serif font-bold text-miami-pink">Miami AI Creator</h1>
-        <ul className="space-y-2">
-          {navItems.map((item) => (
-            <li key={item.name}>
-              <Link 
-                href={item.path} 
-                className={}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <main className="flex-1 p-8 overflow-auto">
-        {children}
-      </main>
-    </div>
+  return React.createElement('div', { className: "flex min-h-screen" },
+    React.createElement('nav', { className: "w-64 bg-white dark:bg-miami-dark p-6 space-y-6" },
+      React.createElement('h1', { className: "text-2xl font-serif font-bold text-miami-pink" }, "Miami AI Creator"),
+      React.createElement('ul', { className: "space-y-2" },
+        navItems.map((item) => 
+          React.createElement('li', { key: item.name },
+            React.createElement(Link, { 
+              href: item.path,
+              className: 
+            }, item.name)
+          )
+        )
+      )
+    ),
+    React.createElement('main', { className: "flex-1 p-8 overflow-auto" }, children)
   )
 }
