@@ -51,8 +51,8 @@ EOF
 
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
-Implemented basic dashboard structure with links to Content Creator and Analytics pages.
+Implemented simple dashboard layout with links to Content Creator and Analytics pages.
 Created placeholder pages for Content Creator and Analytics.
 EOF
 
-echo "Basic dashboard structure implemented. Please run 'npm run dev' to see the changes."
+echo "Simple dashboard layout implemented. Please run 'npm run dev' to see the changes."
