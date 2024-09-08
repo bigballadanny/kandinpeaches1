@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --foreground-rgb: 54, 69, 79;
+  --background-start-rgb: 245, 230, 211;
+  --background-end-rgb: 255, 255, 255;
 }
 
-[data-theme="light"] {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.dark {
+  --foreground-rgb: 245, 230, 211;
+  --background-start-rgb: 25, 25, 112;
+  --background-end-rgb: 74, 14, 78;
 }
 
 body {
@@ -26,26 +26,18 @@ body {
   rgb(var(--background-start-rgb));
 }
 
-.neon-text {
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00de, 0 0 20px #ff00de, 0 0 35px #ff00de;
-}
-
-.glass-card {
+.luxury-card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-.gradient-bg {
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #6c5ce7, #ffa502);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.gradient-text {
+  background: linear-gradient(45deg, #D4AF37, #4A0E4E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }

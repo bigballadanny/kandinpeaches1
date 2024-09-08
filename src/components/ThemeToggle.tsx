@@ -1,22 +1,22 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
 
-const ThemeToggle: React.FC = () => {
-  const [isDark, setIsDark] = useState(true);
+export default function ThemeToggle() {
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
 
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors"
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      className="p-2 rounded-full bg-luxury-gold text-midnight-blue"
     >
-      {isDark ? '🌙' : '☀️'}
+      {theme === 'dark' ? '🌙' : '☀️'}
     </button>
-  );
-};
-
-export default ThemeToggle;
+  )
+}

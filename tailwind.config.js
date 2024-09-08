@@ -8,18 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'miami-pink': '#ff6b6b',
-        'miami-blue': '#4ecdc4',
-        'miami-purple': '#6c5ce7',
-        'miami-orange': '#ffa502',
-        'dark-bg': '#1e1e2e',
-        'light-bg': '#2d2d44',
+        'luxury-gold': '#D4AF37',
+        'deep-purple': '#4A0E4E',
+        'midnight-blue': '#191970',
+        'soft-cream': '#F5E6D3',
+        'charcoal': '#36454F',
       },
       fontFamily: {
-        'retro': ['VT323', 'monospace'],
-        'modern': ['Roboto', 'sans-serif'],
+        'sans': ['Montserrat', 'sans-serif'],
+        'serif': ['Playfair Display', 'serif'],
       },
     },
   },
   plugins: [],
+  darkMode: 'class',
 }
