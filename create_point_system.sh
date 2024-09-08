@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Create PointSystem component
+cat > src/components/PointSystem.tsx << EOF
 'use client'
 
 import React from 'react'
@@ -14,3 +18,13 @@ const PointSystem: React.FC<PointSystemProps> = ({ points }) => {
 }
 
 export default PointSystem
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Created PointSystem component:
+- Displays creator points
+- Styled to match luxury theme
+EOF
+
+echo "PointSystem component created. Please run 'npm run dev' to see the changes."
