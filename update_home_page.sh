@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update Home page
+cat > src/app/page.tsx << EOF
 import dynamic from 'next/dynamic'
 
 const LevelProgress = dynamic(() => import('../components/LevelProgress'), { ssr: false })
@@ -25,3 +29,13 @@ export default function Home() {
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Updated Home page:
+- Added PointSystem component
+- Implemented grid layout for dashboard components
+EOF
+
+echo "Home page updated. Please run 'npm run dev' to see the changes."
