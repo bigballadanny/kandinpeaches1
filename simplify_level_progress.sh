@@ -4,28 +4,32 @@
 cat > src/components/LevelProgress.tsx << EOF
 'use client'
 
-import React from 'react';
+import React from 'react'
 
-type LevelProgressProps = {
+interface LevelProgressProps {
   level: number;
   experience: number;
   nextLevelExperience: number;
-};
+}
 
-export default function LevelProgress({ level, experience, nextLevelExperience }: LevelProgressProps) {
+const LevelProgress: React.FC<LevelProgressProps> = ({ level, experience, nextLevelExperience }) => {
   return (
     <div>
-      <h3>Level {level}</h3>
-      <p>{experience} / {nextLevelExperience} XP</p>
+      <h2>Level Progress</h2>
+      <p>Level: {level}</p>
+      <p>Experience: {experience} / {nextLevelExperience}</p>
     </div>
-  );
+  )
 }
+
+export default LevelProgress
 EOF
 
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Simplified LevelProgress component:
-- Removed complex JSX to isolate the issue
+- Removed complex styling and calculations
+- Used basic JSX syntax
 EOF
 
 echo "LevelProgress component simplified. Please run 'npm run dev' to see the changes."
