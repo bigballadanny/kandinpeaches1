@@ -31,8 +31,7 @@ EOF
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Fixed LevelProgress component:
-- Used React.createElement instead of JSX syntax
-- Added explicit TypeScript interface for props
+- Completed expressions in React.createElement calls
 EOF
 
 echo "LevelProgress component fixed. Please run 'npm run dev' to see the changes."
