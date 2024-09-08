@@ -9,18 +9,18 @@ interface LevelProgressProps {
 }
 
 const LevelProgress: React.FC<LevelProgressProps> = ({ level, experience, nextLevelExperience }) => {
-  const progress = (experience / nextLevelExperience) * 100
+  const progress = Math.round((experience / nextLevelExperience) * 100)
 
-  return React.createElement('div', { className: "bg-white dark:bg-midnight-blue p-4 rounded-lg shadow-md" },
-    React.createElement('h2', { className: "text-2xl font-serif font-bold text-luxury-gold mb-2" }, "Level Progress"),
-    React.createElement('p', { className: "text-lg mb-2" }, ),
-    React.createElement('div', { className: "w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700" },
+  return React.createElement('div', { className: "bg-white p-4 rounded-lg shadow-md" },
+    React.createElement('h2', { className: "text-2xl font-bold mb-2" }, "Level Progress"),
+    React.createElement('p', { className: "text-lg mb-2" }, "Level: " + level),
+    React.createElement('p', { className: "text-sm" }, "Experience: " + experience + " / " + nextLevelExperience),
+    React.createElement('div', { className: "w-full bg-gray-200 rounded-full h-2.5" },
       React.createElement('div', {
-        className: "bg-luxury-gold h-2.5 rounded-full",
-        style: { width:  }
+        className: "bg-blue-600 h-2.5 rounded-full",
+        style: { width: progress + "%" }
       })
-    ),
-    React.createElement('p', { className: "text-sm mt-2" }, )
+    )
   )
 }
 

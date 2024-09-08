@@ -13,12 +13,18 @@ interface LevelProgressProps {
 }
 
 const LevelProgress: React.FC<LevelProgressProps> = ({ level, experience, nextLevelExperience }) => {
-  return (
-    <div>
-      <h2>Level Progress</h2>
-      <p>Level: {level}</p>
-      <p>Experience: {experience} / {nextLevelExperience}</p>
-    </div>
+  const progress = Math.round((experience / nextLevelExperience) * 100)
+
+  return React.createElement('div', { className: "bg-white p-4 rounded-lg shadow-md" },
+    React.createElement('h2', { className: "text-2xl font-bold mb-2" }, "Level Progress"),
+    React.createElement('p', { className: "text-lg mb-2" }, "Level: " + level),
+    React.createElement('p', { className: "text-sm" }, "Experience: " + experience + " / " + nextLevelExperience),
+    React.createElement('div', { className: "w-full bg-gray-200 rounded-full h-2.5" },
+      React.createElement('div', {
+        className: "bg-blue-600 h-2.5 rounded-full",
+        style: { width: progress + "%" }
+      })
+    )
   )
 }
 
@@ -28,8 +34,9 @@ EOF
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Simplified LevelProgress component:
-- Removed complex styling and calculations
-- Used basic JSX syntax
+- Removed complex styling
+- Used basic React.createElement syntax
+- Simplified progress bar implementation
 EOF
 
 echo "LevelProgress component simplified. Please run 'npm run dev' to see the changes."
