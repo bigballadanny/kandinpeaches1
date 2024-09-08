@@ -1,0 +1,68 @@
+#!/bin/bash
+
+# Create ClientLayout component
+cat > src/components/ClientLayout.tsx << EOF
+'use client'
+
+import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+
+  return (
+    <div className="flex h-screen bg-gradient-to-br from-soft-cream to-white dark:from-midnight-blue dark:to-deep-purple text-charcoal dark:text-soft-cream">
+      <nav className="w-64 bg-white dark:bg-midnight-blue p-6 space-y-6">
+        <h1 className="text-2xl font-serif font-bold text-luxury-gold">Miami AI Creator</h1>
+        <ul className="space-y-2">
+          {[
+            { name: 'Home', path: '/' },
+            { name: 'Content', path: '/content' },
+            { name: 'Chat', path: '/chat' },
+            { name: 'Profile', path: '/profile' },
+            { name: 'Stats', path: '/stats' },
+            { name: 'Settings', path: '/settings' },
+          ].map((item) => (
+            <li key={item.name}>
+              <Link 
+                href={item.path} 
+                className={`block p-2 rounded transition-all ${
+                  pathname === item.path 
+                    ? 'bg-luxury-gold text-midnight-blue' 
+                    : 'hover:bg-luxury-gold hover:text-midnight-blue'
+                }`}
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <main className="flex-1 p-8 overflow-auto">
+        {children}
+      </main>
+    </div>
+  )
+}
+EOF
+
+# Update Layout component to use ClientLayout
+cat > src/components/Layout.tsx << EOF
+import dynamic from 'next/dynamic'
+
+const ClientLayout = dynamic(() => import('./ClientLayout'), { ssr: false })
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <ClientLayout>{children}</ClientLayout>
+}
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Created ClientLayout component and updated Layout:
+- Moved client-side logic to ClientLayout
+- Updated Layout to use ClientLayout with dynamic import
+EOF
+
+echo "ClientLayout created and Layout updated. Please run 'npm run dev' to see the changes."
