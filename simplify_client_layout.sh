@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Simplify ClientLayout component
+cat > src/components/ClientLayout.tsx << EOF
 'use client'
 
 import React from 'react'
@@ -20,3 +24,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Simplified ClientLayout component:
+- Removed complex JSX and styling to isolate the issue
+EOF
+
+echo "ClientLayout component simplified. Please run 'npm run dev' to see the changes."
