@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Enhance Home page
+cat > src/app/page.tsx << EOF
 import dynamic from 'next/dynamic'
 
 const PointSystem = dynamic(() => import('../components/PointSystem'), { ssr: false })
@@ -34,3 +38,13 @@ export default function Home() {
     </div>
   )
 }
+EOF
+
+# Update PROJECT_LOG.md
+./update_project.sh << EOF
+Enhanced Home page:
+- Added PointSystem, LevelProgress, and AchievementBadge components
+- Implemented basic layout for creator dashboard
+EOF
+
+echo "Home page enhanced. Please run 'npm run dev' to see the changes."
