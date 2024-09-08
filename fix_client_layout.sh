@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fix ClientLayout component using React.createElement
+# Fix ClientLayout component
 cat > src/components/ClientLayout.tsx << EOF
 'use client'
 
@@ -45,8 +45,7 @@ EOF
 # Update PROJECT_LOG.md
 ./update_project.sh << EOF
 Fixed ClientLayout component:
-- Replaced JSX syntax with React.createElement
-- Maintained navigation structure and styling
+- Corrected className property in Link component
 EOF
 
 echo "ClientLayout component fixed. Please run 'npm run dev' to see the changes."
